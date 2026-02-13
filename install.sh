@@ -9,11 +9,12 @@ if [ $BUILDPLATFORM == "linux/amd64" ]; then
   # in their custom image. For the amd64 architecture, things are more straightforward, as the WSTP development files are
   # available in the official image. For the arm64 architecture, we need to copy the WSTP development files from the official 
   # image to our custom image, as they are not available in the official image for arm64.
-  cp /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h /usr/local/include/amd64/
-  cp /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/libWSTP64i4.so /usr/local/lib/amd64/
-
-  cp /usr/local/include/amd64/wstp.h /usr/local/include/
-  cp /usr/local/lib/amd64/libWSTP64i4.so /usr/local/lib/  
+  sudo mkdir -p /usr/local/include/amd64
+  sudo mkdir -p /usr/local/lib/amd64
+  sudo cp /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h /usr/local/include/amd64/
+  sudo cp /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/libWSTP64i4.so /usr/local/lib/amd64/
+  sudo cp /usr/local/include/amd64/wstp.h /usr/local/include/
+  sudo cp /usr/local/lib/amd64/libWSTP64i4.so /usr/local/lib/  
 else
   apt-get update && apt-get upgrade -y && apt-get install -y build-essential ca-certificates
   # yes | apt-get install -y ./wolfram-engine_14.3.0+202510021899_arm64.deb

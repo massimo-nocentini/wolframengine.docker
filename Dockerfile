@@ -14,6 +14,4 @@ ENV WE_VERSION=$WE_VERSION
 COPY --from=base /usr/local/Wolfram /usr/local/Wolfram
 COPY install.sh .
 
-RUN bash install.sh
-
-USER wolframengine
+RUN bash install.sh && rm install.sh

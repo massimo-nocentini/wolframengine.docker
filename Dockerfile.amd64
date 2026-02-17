@@ -11,4 +11,4 @@ WORKDIR /home/wolframengine
 
 RUN     mkdir -p dist \
     &&  cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h dist/ \
-    &&  sudo cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Libraries/Linux-x86-64/* dist/
+    &&  cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Libraries/Linux-x86-64/* dist/

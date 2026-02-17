@@ -1,10 +1,14 @@
 
 
 
-FROM wolframresearch/wolframengine:14.3 AS base
+FROM wolframresearch/wolframengine:14.3
 
 ARG WE_VERSION=14.3
 ENV WE_VERSION=$WE_VERSION
 
-RUN     cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h /usr/local/include/ \
-    &&  cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Libraries/Linux-x86-64/* /usr/local/lib/
+USER wolframengine
+WORKDIR /home/wolframengine
+
+RUN     mkdir -p dist \
+    &&  cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h dist/ \
+    &&  sudo cp -r /usr/local/Wolfram/WolframEngine/${WE_VERSION}/SystemFiles/Libraries/Linux-x86-64/* dist/

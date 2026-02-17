@@ -1,6 +1,7 @@
 
 run:
-	docker run -it --rm -v ~/.WolframEngine/Licensing:/home/wolframengine/.WolframEngine/Licensing ghcr.io/massimo-nocentini/wolframengine.docker:master
+	docker run --user wolframengine -it --rm -v ./Licensing/mathpass:/opt/Wolfram/WolframEngine/14.3/Configuration/Licensing/mathpass ghcr.io/massimo-nocentini/wolframengine.docker:14.3
+# 	docker run -it --rm -v ./Licensing:/home/wolframengine/.WolframEngine/Licensing wolframresearch/wolframengine:14.3
 
 linux:
 	docker run -it --rm -p 8081:8080 -e WOLFRAM_PORT=8080 -v ~/.WolframEngine/Licensing:/home/wolframengine/.WolframEngine/Licensing ghcr.io/massimo-nocentini/wolframengine.docker:wstpkernel
